@@ -1,7 +1,13 @@
 var video;
+var vol;
+// vol = document.querySelector("#volume"); //this won't work
+// js is loaded before the html/body therefore vol will get a null.
+
+// console.log(vol);
 
 function getVid(){
     video = document.querySelector("#myVideo"); 
+    vol = document.querySelector("#volume");
 }
 
 function playVid() {
@@ -9,9 +15,7 @@ function playVid() {
     console.log("Play Video");
     changeVolume();
     // lecture
-    var vol = document.querySelector("#volume");
     vol.innerHTML = video.volume * 100 + "%";
-    console.log(video);
 } 
 
 function pauseVid() { 
@@ -23,12 +27,13 @@ function pauseVid() {
 function decreaseSpeed() { 
     var decreaseBy = 0.2;
     video.playbackRate *= 1 - decreaseBy;
-    console.log("Speed is "+ video.playbackRate);
+    console.log("Speed is " + video.playbackRate);
 } 
 
 function increaseSpeed() {
-
-    console.log("Speed is "+ 1);
+    var increaseBy = 0.25;
+    video.playbackRate *= 1 + increaseBy;
+    console.log("Speed is " + video.playbackRate);
 } 
 
 function skipAhead() {
@@ -51,9 +56,13 @@ function mute() {
 }
 
 function changeVolume() {
-    console.log("Volume is ");
-
-    // var v = document.getElementById("volumeSlider").value;
+    
+    
+    slider = document.querySelector("#volumeSlider");
+    video.volume = slider.value / 100;
+    vol.innerHTML = video.volume * 100 + "%";
+    console.log("Volume is ", slider.value);
+        // var v = document.getElementById("volumeSlider").value;
     // document.getElementById("volume").innerHtml = v;
 
 }
