@@ -11,6 +11,7 @@ function getVid(){
     vol = document.querySelector("#volume");
 }
 
+
 function playVid() {
     video.play();
     console.log("Play Video");

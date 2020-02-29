@@ -18,7 +18,13 @@
 	}
 
 	/*Use CSS before property to display the image before the text in the buttons*/
-	
+	/* Reference: https://www.w3schools.com/cssref/pr_gen_content.asp */
+    button.play::before{
+        content: url(../images/play.png)
+    }
+    button.pause::before{
+        content: url(../images/pause.png)
+    }
 </style>
 </head>
 <body onload = "getVid()"> 
