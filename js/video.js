@@ -1,5 +1,6 @@
 var video;
 var vol;
+
 // vol = document.querySelector("#volume"); //this won't work
 // js is loaded before the html/body therefore vol will get a null.
 
@@ -37,8 +38,16 @@ function increaseSpeed() {
 } 
 
 function skipAhead() {
-
-    console.log("Current location is "+ 1);
+    var vidLimit = video.duration - 60;
+    if (video.currentTime < vidLimit){
+        video.currentTime += 60;
+        video.play();
+    } else {
+        video.currentTime = 0;
+        video.playbackRate = 1;
+    }
+    // playVid();
+    console.log("Current location is " + video.currentTime);
 } 
 
 function mute() {
@@ -56,24 +65,26 @@ function mute() {
 }
 
 function changeVolume() {
-    
-    
     slider = document.querySelector("#volumeSlider");
     video.volume = slider.value / 100;
     vol.innerHTML = video.volume * 100 + "%";
     console.log("Volume is ", slider.value);
         // var v = document.getElementById("volumeSlider").value;
     // document.getElementById("volume").innerHtml = v;
-
 }
        
 
-function gray() { 
-
-    console.log("In grayscale")
+function gray() {
+    if (video.classList.value != "grayscale"){
+        video.classList.toggle("grayscale");
+    }
+    console.log("In grayscale");
 }
 
 function color() {
-
+    if (video.classList.value == "grayscale"){
+        video.classList.toggle("grayscale");
+    }
+    
     console.log("In color") 
 }
